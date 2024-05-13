@@ -32,7 +32,7 @@ class SinglyLinkedList {
     addToTail(val) {
         // There are bugs in this method! Fix them!!!
         // Write your hypothesis on the time complexity of this method here
-
+        //O(n)=> Because we have loop and the time will increase as the length of the linked list increase.
         // Add node of val to tail of linked list
         let newNode = new SinglyLinkedNode(val);
         //Check if the linked list is mepty.
@@ -54,12 +54,69 @@ class SinglyLinkedList {
 
     removeFromHead() {
         // Remove node at head
-
+        //1.return undefined if empty.
+        if (!this.head) {
+            return undefined;
+        }
+        //2.If the head exesit make it to point to the next value.
+        if (this.head) {
+            let removedHead = this.head
+            this.head = this.head.next;
+            //3.Update the length
+            this.length--;
+            //4.Return the linked list.
+            return removedHead;
+        }
         // Write your hypothesis on the time complexity of this method here
+        //O(1) => Beacuse there is only an assaingment of variables no loops or operations.
     }
 
     removeFromTail() {
         // Remove node at tail
+        //1.Undefined if is empty.
+        if (!this.head) {
+            return undefined;
+        }
+        //2.loop through the linked list
+        let removedEle;
+        let curr = this.head;
+
+        while (curr.next) {
+            //Check for the next pointer:
+            if (!curr.next.next) {
+                removedEle = curr.next;
+                curr.next = null
+                this.length--;
+                return removedEle;
+            }
+            //Update status of the loop:
+            curr = curr.next;
+        }
+        //removedEle = curr;
+        this.head = null;
+        this.length--;
+        return removedEle;
+
+        //This solution is valid.
+        // if (this.head && this.length === 1) {
+        //     removedEle = this.head;
+        //     this.head = null;
+        //     this.length--;
+        //     return removedEle;
+        // } else {//if the linked list is not empty and has more then one element.
+        //     //need to loop through the linked list untill count reach to length - 1
+        //     let curr = this.head;
+        //     while (curr.next) {
+        //         //The goal of the if statment is only to chack the last element before we reach to null and exit from the loop.
+        //         if (curr.next.next === null) {
+        //             removedEle = curr.next;
+        //             curr.next = null;
+        //             this.length--;
+        //             return removedEle;
+        //         }
+        //         curr = curr.next;
+        //     }
+        // }
 
         // Write your hypothesis on the time complexity of this method here
     }
