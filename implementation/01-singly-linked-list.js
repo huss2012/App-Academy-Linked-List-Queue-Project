@@ -96,7 +96,8 @@ class SinglyLinkedList {
         this.head = null;
         this.length--;
         return removedEle;
-
+        // Write your hypothesis on the time complexity of this method here
+        //O(n) => because it has a loop the time will increase as the linked list length increase.
         //This solution is valid.
         // if (this.head && this.length === 1) {
         //     removedEle = this.head;
@@ -116,21 +117,30 @@ class SinglyLinkedList {
         //         }
         //         curr = curr.next;
         //     }
-        // }
+        //}
 
-        // Write your hypothesis on the time complexity of this method here
+
     }
 
     peekAtHead() {
         // Return value of head node
-
+        if (!this.head) return undefined;
+        if (this.head) return this.head.value;
         // Write your hypothesis on the time complexity of this method here
+        //O(1): it only return the value of the head.
     }
 
     print() {
         // Print out the linked list
-
+        if (!this.head) return;
+        let currentNode = this.head
+        while (currentNode) {
+            console.log(`${currentNode.value}`);
+            currentNode = currentNode.next;
+        }
+        console.log("NULL")
         // Write your hypothesis on the time complexity of this method here
+        //O(n).
     }
 }
 
