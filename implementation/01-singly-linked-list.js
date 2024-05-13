@@ -12,10 +12,21 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
-    addToHead(val) { 
+    addToHead(val) {
         // Add node of val to head of linked list
+        //1.Create the node.
+        const newNode = new SinglyLinkedNode(val);
+        //2.Set the pointer for the newNode to point to the old head.
+        newNode.next = this.head;
+        //3.Shift the head to point to the newNode value.
+        this.head = newNode;
+        //4.Update the length of the linked list.
+        this.length++;
+        //5.Return the linked list;
+        return this;
 
-        // Write your hypothesis on the time complexity of this method here
+        // Write oru hypothesis on the time complexity of this method here
+        //O(1) => Only creation and modifying the linked list.
     }
 
     addToTail(val) {
@@ -23,20 +34,22 @@ class SinglyLinkedList {
         // Write your hypothesis on the time complexity of this method here
 
         // Add node of val to tail of linked list
-        let newNode = new SinglyLinkedNode(data);
-
-        if (!head) {
-            head = newNode;
-            return head;
+        let newNode = new SinglyLinkedNode(val);
+        //Check if the linked list is mepty.
+        if (!this.head) {
+            this.head = newNode;
+            this.length++;
+            return this;
         }
-
-        let curr = head;
-        while (curr) {
-            curr = current.next;
+        //If the linked list is not empty. loop through untill reach null
+        let curr = this.head;
+        while (curr.next) { //check on the pointer value
+            curr = curr.next;
         }
         curr.next = newNode;
 
-        return head;
+        this.length++;
+        return this;
     }
 
     removeFromHead() {
@@ -59,7 +72,7 @@ class SinglyLinkedList {
 
     print() {
         // Print out the linked list
-        
+
         // Write your hypothesis on the time complexity of this method here
     }
 }
